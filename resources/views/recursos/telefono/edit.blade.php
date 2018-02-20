@@ -4,36 +4,34 @@
 
 @section('content')
 
-	<form method="POST" class="form-horizontal" action="{{ route('recursos.telefono.update',$telefono->id) }}">
-		{{ method_field('PUT') }} {{ csrf_field() }}
+<form method="POST" class="form-horizontal" action="{{ route('recursos.telefono.update',$telefono->id) }}">
+	{{ method_field('PUT') }} {{ csrf_field() }}
 
-		<div class="form-group">
-			<label class="col-xs-2 col-sm-2 control-label" for="numero">Número</label>
-			<div class="col-xs-8 col-sm-8"><input type="text" class="form-control" name="numero" value="{{ $telefono->numero }}"></div>
-		</div>
-
-
-		<div class="form-group">
-			<label class="col-xs-2 col-sm-2 control-label" for="minsal">Minsal</label>
-			<div class="col-xs-8 col-sm-8"><input type="text" class="form-control" name="minsal" value="{{ $telefono->minsal }}"></div>
-		</div>
+	<fieldset class="form-group">
+		<label for="forNumero">Número</label>
+		<input type="integer" class="form-control" id="forNumero" name="numero" value="{{ $telefono->numero }}">
+	</fieldset>
 
 
-		<div class="form-group">
-			<div class="col-xs-4 col-sm-2 col-sm-offset-2">
-				<button type="submit" class="btn btn-sm btn-primary">
-					<span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span> Actualizar</button>
-			</div>
-			
-			</form>
-			
+	<fieldset class="form-group">
+		<label for="forMinsal">Minsal</label>
+		<input type="integer" class="form-control" id="forMinsal" name="minsal" value="{{ $telefono->minsal }}">
+	</fieldset>
 
-			<div class="col-xs-4 col-sm-2">
-				<form method="POST" action="{{ route('recursos.telefono.destroy', $telefono->id) }}" style="display: inline;">
-					{{ method_field('DELETE') }} {{ csrf_field() }}
-					<button class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar</button>
-				</form>
-			</div>
-		</div>
+
+	<fieldset class="form-group d-inline">
+		<button type="submit" class="btn btn-primary">
+			<span class="fas fa-save" aria-hidden="true"></span> Actualizar</button>
+		
+		</form>
+
+		<a href="{{ route('recursos.telefono.index') }}" class="btn btn-outline-dark">Cancelar</a>
+
+		<form method="POST" action="{{ route('recursos.telefono.destroy', $telefono->id) }}" class="d-inline">
+			{{ method_field('DELETE') }} {{ csrf_field() }}
+			<button class="btn btn-danger"><span class="fas fa-trash" aria-hidden="true"></span> Eliminar</button>
+		</form>
+		
+	</fieldset>
 
 @endsection

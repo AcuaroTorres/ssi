@@ -7,17 +7,16 @@
 <form method="POST" class="form-horizontal" action="{{ route('rrhh.cargos.store') }}">
 	{{ csrf_field() }}
 
-	<div class="form-group">
-		<label class="col-xs-2 col-sm-2 control-label" for="name">Nombre</label>
-		<div class="col-xs-8 col-sm-8"><input type="text" class="form-control" name="name"></div>
-	</div>
+	<fieldset class="form-group">
+		<label for="forName">Nombre del Cargo</label>
+		<input type="text" class="form-control" id="forName" placeholder="Nombre del cargo" name="name" required="required">
+	</fieldset>
 
+      
+    <button type="submit" class="btn btn-primary">Crear</button>
 
-    <div class="form-group">
-      <div class="col-xs-4 col-sm-2 col-sm-offset-2">
-        <button type="submit" class="btn btn-primary">Crear</button>
-      </div>
-    </div>
+    <a href="{{ route('rrhh.cargos.index') }}" class="btn btn-outline-dark">Cancelar</a>
+
 </form>
 
 @endsection

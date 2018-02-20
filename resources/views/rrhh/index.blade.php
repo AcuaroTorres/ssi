@@ -4,34 +4,32 @@
 
 @section('content')
 
-<form method="GET" action="{{ route('rrhh.users.index') }}" class="navbar_form pull-right">
-	<div class="col-md-8 pull-right">
-		<div class="input-group">
-			<input type="text" class="form-control" name="name" placeholder="Buscar usuario por nombre">
-			<span class="input-group-btn">
-				<button class="btn btn-primary" type="submit">
-			    	<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-				</button>
-			</span>
+
+<form class="form-inline float-right" method="GET" action="{{ route('rrhh.users.index') }}">
+	<div class="input-group mb-3">
+		<input type="text" name="name" class="form-control" placeholder="Buscar usuario por nombre">
+		<div class="input-group-append">
+			<button class="btn btn-outline-secondary" type="button"><span class="fas fa-search" aria-hidden="true"></span></button>
 		</div>
 	</div>
 </form>
 
-<br><br>
 
-
+<br>
 
 <table class="table table-striped">
-	<thead>
-		<th>RUN</th>
-		<th>Nombre</th>
-		<th class="hidden-xs">Roles</th>
-		<th>Accion</th>
+	<thead class="thead-dark">
+		<tr>
+			<th scope="col">RUN</th>
+			<th scope="col">Nombre</th>
+			<th scope="col" class="hidden-xs">Roles</th>
+			<th scope="col">Accion</th>
+		</tr>
 	</thead>
 	<tbody>
 		@foreach($users as $user)
 		<tr>
-			<td>{{ $user->runFormat() }}</td>
+			<th scope="row">{{ $user->runFormat() }}</td>
 			<td>{{ $user->name }}</td>
 			<td class="hidden-xs">
 			@foreach($user->roles as $rol)
@@ -39,8 +37,8 @@
 			@endforeach
 			</td>
 			<td>
-				<a href="{{ route('rrhh.users.edit',$user->id) }}" class="btn btn-warning">
-				<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>			
+				<a href="{{ route('rrhh.users.edit',$user->id) }}" class="btn btn-outline-secondary">
+				<span class="fas fa-edit" aria-hidden="true"></span></a>			
 			</td>
 		</tr>
 		@endforeach

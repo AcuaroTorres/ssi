@@ -9,10 +9,12 @@
 
 <table class="table table-striped">
 	<thead>
-		<th>ID</th>
-		<th>Número</th>
-		<th>Minsal</th>
-		<th>Accion</th>
+		<tr>
+			<th>ID</th>
+			<th>Número</th>
+			<th>Minsal</th>
+			<th>Accion</th>
+		</tr>
 	</thead>
 	<tbody>
 		@foreach($telefonos as $telefono)
@@ -21,8 +23,8 @@
 			<td>{{ $telefono->numero }}</td>
 			<td>{{ $telefono->minsal }}</td>
 			<td>
-				<a href="{{ route('recursos.telefono.edit', $telefono->id) }}" class="btn btn-warning">
-				<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+				<a href="{{ route('recursos.telefono.edit', $telefono->id) }}" class="btn btn-outline-secondary">
+				<span class="fas fa-edit" aria-hidden="true"></span></a>
 			</td>
 		</tr>
 		@endforeach

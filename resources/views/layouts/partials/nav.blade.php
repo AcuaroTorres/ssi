@@ -1,102 +1,99 @@
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
-        <div class="navbar-header">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-            <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+    <!-- Branding Image -->
+    <a class="navbar-brand" href="{{ route('home') }}">{{ config('app.name') }}</a>
 
-            <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ route('home') }}">
-                {{ config('app.name') }}
-            </a>
-        </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" 
+        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse" id="app-navbar-collapse">
-            <!-- Left Side Of Navbar -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Left Side Of Navbar -->
+        @auth
+        <ul class="navbar-nav mr-auto">
 
-           
-            <ul class="nav navbar-nav">
+            <li class="nav-item dropdown 
+                @if(Route::currentRouteName()=='rrhh.users.index' OR
+                    Route::currentRouteName()=='rrhh.users.create' OR
+                    Route::currentRouteName()=='rrhh.cargos.index' OR
+                    Route::currentRouteName()=='rrhh.cargos.create' )active @endif">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">RRHH</a>
 
-                @guest
-                    <li class="@if(Route::currentRouteName()=='recursos.telefono.directorio')active @endif">
-                      <a href="{{ route('recursos.telefono.directorio') }}">Directorio Telefónico</a></li>
-                @else
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                <li class="dropdown @if(Route::currentRouteName()=='rrhh.users.index' OR
-                                        Route::currentRouteName()=='rrhh.users.create' OR
-                                        Route::currentRouteName()=='rrhh.cargos.index' )active @endif">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">RRHH <span class="caret"></span></a>
-                  <ul class="dropdown-menu">                    
+                    <a class="dropdown-item @if(Route::currentRouteName()=='rrhh.users.create')active @endif" 
+                    href="{{ route('rrhh.users.create') }}">Crear Usuario</a>
 
-                    <li class="@if(Route::currentRouteName()=='rrhh.users.create')active @endif">
-                      <a href="{{ route('rrhh.users.create') }}">Crear Usuario</a></li>
+                    <a class="dropdown-item @if(Route::currentRouteName()=='rrhh.users.index')active @endif" 
+                    href="{{ route('rrhh.users.index') }}">Usuarios</a>
 
-                    <li class="@if(Route::currentRouteName()=='rrhh.users.index')active @endif">
-                      <a href="{{ route('rrhh.users.index') }}">Usuarios</a></li>
+                    <a class="dropdown-item 
+                        @if(Route::currentRouteName()=='rrhh.cargos.index' OR
+                            Route::currentRouteName()=='rrhh.cargos.create')active @endif" 
+                        href="{{ route('rrhh.cargos.index') }}">Cargos</a>
 
-                    <li class="@if(Route::currentRouteName()=='rrhh.cargos.index')active @endif">
-                      <a href="{{ route('rrhh.cargos.index') }}">Cargos</a></li>
+                </div>
 
-                  </ul>
-                </li>
+            </li>
+
+            <li class="nav-item dropdown 
+                @if(Route::currentRouteName()=='recursos.telefono.index' OR
+                    Route::currentRouteName()=='recursos.telefono.create' OR
+                    Route::currentRouteName()=='recursos.telefono.edit' )active @endif">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Recursos</a>
+
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                    <a class="dropdown-item 
+                        @if(Route::currentRouteName()=='recursos.telefono.index' OR
+                            Route::currentRouteName()=='recursos.telefono.create' OR
+                            Route::currentRouteName()=='recursos.telefono.edit' )active @endif" 
+                    href="{{ route('recursos.telefono.index') }}">Teléfonos</a>
+
+                </div>
+
+            </li>
 
 
-                <li class="dropdown @if(Route::currentRouteName()=='recursos.telefono.index' OR
-                                        Route::currentRouteName()=='recursos.telefono.create' OR
-                                        Route::currentRouteName()=='recursos.telefono.edit' )active @endif">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Recursos <span class="caret"></span></a>
-                  <ul class="dropdown-menu">                    
+        </ul>
+        @endauth
 
-                    <li class="@if(Route::currentRouteName()=='recursos.telefono.index' OR
-                                        Route::currentRouteName()=='recursos.telefono.create' OR
-                                        Route::currentRouteName()=='recursos.telefono.edit' )active @endif">
-                      <a href="{{ route('recursos.telefono.index') }}">Telefonos</a></li>
+        <!-- Right Side Of Navbar -->
+        <ul class="navbar-nav ml-auto">
 
-                  </ul>
-                </li>
-                @endguest
-            </ul>
+            <!-- Authentication Links -->
+            @guest
+            <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a></li>
+            @else
+
+            <li class="nav-item dropdown 
+                @if(Route::currentRouteName()=='rrhh.password.edit')active @endif">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
+
+                
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                    <a class="dropdown-item @if(Route::currentRouteName()=='password.edit')active @endif" 
+                    href="{{ route('password.edit') }}">Cambiar Clave</a>
+
+                    <div class="dropdown-divider"></div>
+
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        Cerrar Sesión</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+
+                </div>
+            @endguest
             
+        </ul>
 
-            <!-- Right Side Of Navbar -->
-            <ul class="nav navbar-nav navbar-right">
-                <!-- Authentication Links -->
-                @guest
-                    <li><a href="{{ route('login') }}">Iniciar Sesión</a></li>
-                    <?php /* <li><a href="{{ route('register') }}">Register</a></li> */ ?>
-                @else
-                    <li class="dropdown @if(Route::currentRouteName()=='rrhh.password.edit')active @endif">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-
-                        <ul class="dropdown-menu">
-
-                            <li class="@if(Route::currentRouteName()=='password.edit')active @endif">
-                                <a href="{{ route('password.edit') }}">Cambiar Clave</a></li>
-                            
-                            <li role="separator" class="divider"></li>
-
-                            <li>
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                    Cerrar Sesión
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                @endguest
-            </ul>
-        </div>
-    </div>
+  </div>
 </nav>

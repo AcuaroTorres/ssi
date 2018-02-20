@@ -6,25 +6,22 @@
 
 <form method="POST" class="form-horizontal" action="{{ route('recursos.telefono.store') }}">
 	{{ csrf_field() }}
+	
+	<fieldset class="form-group">
+		<label for="forNumero">Número</label>
+		<input type="integer" class="form-control" id="forNumero" placeholder="Número" name="numero" required="required">
+	</fieldset>
 
-	<div class="form-group">
-		<label class="col-xs-2 col-sm-2 control-label" for="numero">Número</label>
-		<div class="col-xs-8 col-sm-8"><input type="text" class="form-control" name="numero"></div>
-	</div>
+	<fieldset class="form-group">
+		<label for="forMinsal">Minsal</label>
+		<input type="integer" class="form-control" id="forMinsal" placeholder="Anexo Minsal" name="minsal" required="required">
+	</fieldset>
 
-	<div class="form-group">
-		<label class="col-xs-2 col-sm-2 control-label" for="minsal">Minsal</label>
-		<div class="col-xs-8 col-sm-8"><input type="text" class="form-control" name="minsal"></div>
-	</div>
+    
+    <button type="submit" class="btn btn-primary">Crear</button>
+    
+    <a href="{{ route('recursos.telefono.index') }}" class="btn btn-outline-dark">Cancelar</a>
 
-    <div class="form-group">
-      <div class="col-xs-4 col-sm-2 col-sm-offset-2">
-        <button type="submit" class="btn btn-primary">Crear</button>
-      </div>
-      <div class="col-xs-4 col-sm-2">
-      	<a href="{{ route('recursos.telefono.index') }}" class="btn btn-default">Cancelar</a>
-      </div>
-    </div>
 </form>
 
 @endsection

@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use SoftDeletes;
 
     /**
     * Ambos son por que cambié el id
@@ -30,22 +32,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'cargo_id', 'password', 'remember_token',
+        'password', 'remember_token',
     ];
 
     public function roles() {
         return $this->belongsToMany(Role::class);
     }
-
-    public function cargos() {
-        return $this->belongsToMany(rrhh\Cargo::class);
-    }
-
-    public function telefono() {
-        return $this->hasOne(Recurso\Telefono::class);
-    }
-
-    
 
     /**
     * @param string|array $roles
@@ -83,4 +75,11 @@ class User extends Authenticatable
         return $query->where('name', "LIKE", "%$name%");  
       }  
     }
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
 }
