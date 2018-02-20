@@ -24,11 +24,14 @@
 
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                    <a class="dropdown-item @if(Route::currentRouteName()=='rrhh.users.create')active @endif" 
-                    href="{{ route('rrhh.users.create') }}">Crear Usuario</a>
+                    <a class="dropdown-item 
+                        @if(Route::currentRouteName()=='rrhh.users.index')active @endif" 
+                        href="{{ route('rrhh.users.index') }}">Usuarios</a>
 
-                    <a class="dropdown-item @if(Route::currentRouteName()=='rrhh.users.index')active @endif" 
-                    href="{{ route('rrhh.users.index') }}">Usuarios</a>
+                    <a class="dropdown-item 
+                        @if(Route::currentRouteName()=='rrhh.organizationalunits.index' OR
+                            Route::currentRouteName()=='rrhh.organizationalunits.create')active @endif" 
+                        href="{{ route('rrhh.organizationalunits.index') }}">Unidades organizacionales</a>
 
                     <a class="dropdown-item 
                         @if(Route::currentRouteName()=='rrhh.cargos.index' OR
@@ -40,12 +43,12 @@
             </li>
 
             <li class="nav-item dropdown 
-                @if(Route::currentRouteName()=='resources.telephone.index' OR
-                    Route::currentRouteName()=='resources.telephone.create' OR
-                    Route::currentRouteName()=='resources.telephone.edit' OR
-                    Route::currentRouteName()=='resources.computer.index' OR
-                    Route::currentRouteName()=='resources.computer.create' OR
-                    Route::currentRouteName()=='resources.computer.edit'
+                @if(Route::currentRouteName()=='resources.telephones.index' OR
+                    Route::currentRouteName()=='resources.telephones.create' OR
+                    Route::currentRouteName()=='resources.telephones.edit' OR
+                    Route::currentRouteName()=='resources.computers.index' OR
+                    Route::currentRouteName()=='resources.computers.create' OR
+                    Route::currentRouteName()=='resources.computers.edit'
                     )active @endif">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Recursos</a>
@@ -53,16 +56,16 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
                     <a class="dropdown-item 
-                        @if(Route::currentRouteName()=='resources.telephone.index' OR
-                            Route::currentRouteName()=='resources.telephone.create' OR
-                            Route::currentRouteName()=='resources.telephone.edit' )active @endif" 
-                    href="{{ route('resources.telephone.index') }}">Teléfonos</a>
+                        @if(Route::currentRouteName()=='resources.telephones.index' OR
+                            Route::currentRouteName()=='resources.telephones.create' OR
+                            Route::currentRouteName()=='resources.telephones.edit' )active @endif" 
+                    href="{{ route('resources.telephones.index') }}">Teléfonos</a>
 
                     <a class="dropdown-item 
-                        @if(Route::currentRouteName()=='resources.computer.index' OR
-                            Route::currentRouteName()=='resources.computer.create' OR
-                            Route::currentRouteName()=='resources.computer.edit' )active @endif" 
-                    href="{{ route('resources.computer.index') }}">Computadores</a>
+                        @if(Route::currentRouteName()=='resources.computers.index' OR
+                            Route::currentRouteName()=='resources.computers.create' OR
+                            Route::currentRouteName()=='resources.computers.edit' )active @endif" 
+                    href="{{ route('resources.computers.index') }}">Computadores</a>
 
                 </div>
 

@@ -30,6 +30,8 @@ Route::prefix('rrhh')->as('rrhh.')->group(function(){
 	Route::get('users/{user}/roles', 'rrhh\RolesController@index')->name('roles.index');
 	Route::post('users/{user}/roles','rrhh\RolesController@attach')->name('roles.attach');
 	
+	Route::resource('organizationalunits','rrhh\OrganizationalUnitController')->middleware('auth');
+
 	Route::resource('cargos','rrhh\CargoController')->middleware('auth');
 
 	Route::resource('users','rrhh\UsersController')->middleware('auth');
@@ -37,7 +39,7 @@ Route::prefix('rrhh')->as('rrhh.')->group(function(){
 });
 
 Route::prefix('resources')->as('resources.')->group(function(){
-	Route::get('telephone/directory', 'Resources\TelephoneController@directory')->name('telephone.directory');
-	Route::resource('telephone','Resources\TelephoneController')->middleware('auth');
-	Route::resource('computer','Resources\ComputerController')->middleware('auth');
+	Route::get('telephones/directory', 'Resources\TelephoneController@directory')->name('telephone.directory');
+	Route::resource('telephones','Resources\TelephoneController')->middleware('auth');
+	Route::resource('computers','Resources\ComputerController')->middleware('auth');
 });

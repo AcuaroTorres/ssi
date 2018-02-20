@@ -16,6 +16,7 @@ class ResourcesComputersTableSeeder extends Seeder
         $computer->model = 'v510z';
         $computer->serial = 'MP1A0M53';
         $computer->ip = '10.8.226.29';
+        $computer->user_id = 15287582;
         $computer->save();
 
         $computer = new App\Resources\Computer();

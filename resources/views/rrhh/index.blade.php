@@ -4,6 +4,11 @@
 
 @section('content')
 
+<h3 class="inline">Usuarios
+	<a href="{{ route('rrhh.users.create') }}" class="btn btn-primary">Crear</a>
+</h3>
+
+<br>
 
 <form class="form-inline float-right" method="GET" action="{{ route('rrhh.users.index') }}">
 	<div class="input-group mb-3">

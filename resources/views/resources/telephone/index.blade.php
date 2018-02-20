@@ -6,7 +6,7 @@
 
 <h3 class="inline">Telefonos
 
-<a href="{{ route('resources.telephone.create') }}" class="btn btn-primary">Crear</a>
+<a href="{{ route('resources.telephones.create') }}" class="btn btn-primary">Crear</a>
 </h3>
 <br>
 
@@ -28,7 +28,7 @@
 			<td>{{ $telephone->minsal }}</td>
 			<td>{{ @$telephone->user->name ?: '' }}</td>
 			<td>
-				<a href="{{ route('resources.telephone.edit', $telephone->id) }}" class="btn btn-outline-secondary">
+				<a href="{{ route('resources.telephones.edit', $telephone->id) }}" class="btn btn-outline-secondary">
 				<span class="fas fa-edit" aria-hidden="true"></span></a>
 			</td>
 		</tr>

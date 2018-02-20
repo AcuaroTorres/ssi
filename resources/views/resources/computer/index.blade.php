@@ -6,7 +6,7 @@
 
 <h3 class="inline">Computadores
 
-<a href="{{ route('resources.computer.create') }}" class="btn btn-primary">Crear</a>
+<a href="{{ route('resources.computers.create') }}" class="btn btn-primary">Crear</a>
 </h3>
 <br>
 
@@ -29,7 +29,7 @@
 			<td>{{ $computer->ip }}</td>
 			<td>{{ @$computer->user->name ?: '' }}</td>
 			<td>
-				<a href="{{ route('resources.computer.edit', $computer->id) }}" class="btn btn-outline-secondary">
+				<a href="{{ route('resources.computers.edit', $computer->id) }}" class="btn btn-outline-secondary">
 				<span class="fas fa-edit" aria-hidden="true"></span></a>
 			</td>
 		</tr>

@@ -17,22 +17,23 @@ class UsersTableSeeder extends Seeder
         $usuario_role = Role::where('name','Usuario')->first();
 
         $user = new User();
-        $user->id = 15287582;
-        $user->dv = 7;
-        $user->name = "Alvaro";
-        $user->email = "a@b.c";
-        $user->password = bcrypt('pluto');
+        $user->id = 12345678;
+        $user->dv = 9;
+        $user->name = "Administrador";
+        $user->email = "soporte.ssi@redsalud.gob.cl";
+        $user->password = bcrypt('admin');
         $user->save();
         $user->roles()->attach($admin_role);
         $user->roles()->attach($usuario_role);
 
         $user = new User();
-        $user->id = 21097570;
-        $user->dv = 5;
-        $user->name = "Aaron";
-        $user->email = "aaron@torres.cl";
+        $user->id = 15287582;
+        $user->dv = 7;
+        $user->name = "Alvaro Torres Fuchslocher";
+        $user->email = "alvaro.torres@redsalud.gob.cl";
         $user->password = bcrypt('pluto');
         $user->save();
+        $user->roles()->attach($admin_role);
         $user->roles()->attach($usuario_role);
 
         factory(App\User::class, 5)->create()->each(function ($u) {

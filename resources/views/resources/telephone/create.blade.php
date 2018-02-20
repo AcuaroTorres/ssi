@@ -6,7 +6,7 @@
 
 <h3>Crear nuevo Teléfono</h3>
 
-<form method="POST" class="form-horizontal" action="{{ route('resources.telephone.store') }}">
+<form method="POST" class="form-horizontal" action="{{ route('resources.telephones.store') }}">
 	{{ csrf_field() }}
 	
 	<fieldset class="form-group">
@@ -22,7 +22,7 @@
     
     <button type="submit" class="btn btn-primary">Crear</button>
     
-    <a href="{{ route('resources.telephone.index') }}" class="btn btn-outline-dark">Cancelar</a>
+    <a href="{{ route('resources.telephones.index') }}" class="btn btn-outline-dark">Cancelar</a>
 
 </form>
 
