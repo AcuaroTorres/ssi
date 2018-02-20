@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Recursos;
+namespace App\Resources;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Telefono extends Model
+class Telephone extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,10 +12,10 @@ class Telefono extends Model
      * @var array
      */
     protected $fillable = [
-        'numero', 'minsal',
+        'number', 'minsal',
     ];
 
     public function user() {
-    	return $this->belongTo(User::class);
+    	return $this->belongsTo('\App\User');
     }
 }

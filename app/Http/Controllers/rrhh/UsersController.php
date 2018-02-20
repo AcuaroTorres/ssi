@@ -97,8 +97,10 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
+        $cargos = \App\rrhh\Cargo::orderBy('name','asc')->get();
         return view('rrhh.edit')
-            ->with('user',$user);
+            ->with('user',$user)
+            ->with('cargos',$cargos);
     }
 
     /**
@@ -110,8 +112,18 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        // Detach all cargos from the user...
-        $user->cargos()->detach();
+        if ($request->has('cargos')) {
+            if ($request->filled('cargos')) {
+                foreach($request->input('cargos') as $key=>$cargo){
+                    $user->cargos()->attach($cargo);
+                }
+            }
+            else {
+                // Detach all cargos from the user...
+                $user->cargos()->detach();
+            }
+        }
+        
 
         $user->fill($request->all());
         $user->save();

@@ -43,8 +43,12 @@ class User extends Authenticatable
         return $this->belongsToMany(rrhh\Cargo::class);
     }
 
-    public function telefono() {
-        return $this->hasOne(Recurso\Telefono::class);
+    public function telephone() {
+        return $this->hasOne('\App\Resources\Telephone');
+    }
+
+    public function computer() {
+        return $this->hasOne('\App\Resources\Computer');
     }
 
     /**

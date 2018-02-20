@@ -40,19 +40,29 @@
             </li>
 
             <li class="nav-item dropdown 
-                @if(Route::currentRouteName()=='recursos.telefono.index' OR
-                    Route::currentRouteName()=='recursos.telefono.create' OR
-                    Route::currentRouteName()=='recursos.telefono.edit' )active @endif">
+                @if(Route::currentRouteName()=='resources.telephone.index' OR
+                    Route::currentRouteName()=='resources.telephone.create' OR
+                    Route::currentRouteName()=='resources.telephone.edit' OR
+                    Route::currentRouteName()=='resources.computer.index' OR
+                    Route::currentRouteName()=='resources.computer.create' OR
+                    Route::currentRouteName()=='resources.computer.edit'
+                    )active @endif">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Recursos</a>
 
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
                     <a class="dropdown-item 
-                        @if(Route::currentRouteName()=='recursos.telefono.index' OR
-                            Route::currentRouteName()=='recursos.telefono.create' OR
-                            Route::currentRouteName()=='recursos.telefono.edit' )active @endif" 
-                    href="{{ route('recursos.telefono.index') }}">Teléfonos</a>
+                        @if(Route::currentRouteName()=='resources.telephone.index' OR
+                            Route::currentRouteName()=='resources.telephone.create' OR
+                            Route::currentRouteName()=='resources.telephone.edit' )active @endif" 
+                    href="{{ route('resources.telephone.index') }}">Teléfonos</a>
+
+                    <a class="dropdown-item 
+                        @if(Route::currentRouteName()=='resources.computer.index' OR
+                            Route::currentRouteName()=='resources.computer.create' OR
+                            Route::currentRouteName()=='resources.computer.edit' )active @endif" 
+                    href="{{ route('resources.computer.index') }}">Computadores</a>
 
                 </div>
 

@@ -36,7 +36,8 @@ Route::prefix('rrhh')->as('rrhh.')->group(function(){
 
 });
 
-Route::prefix('recursos')->as('recursos.')->group(function(){
-	Route::get('telefono/directorio', 'Recursos\TelefonoController@directorio')->name('telefono.directorio');
-	Route::resource('telefono','Recursos\TelefonoController')->middleware('auth');
+Route::prefix('resources')->as('resources.')->group(function(){
+	Route::get('telephone/directory', 'Resources\TelephoneController@directory')->name('telephone.directory');
+	Route::resource('telephone','Resources\TelephoneController')->middleware('auth');
+	Route::resource('computer','Resources\ComputerController')->middleware('auth');
 });

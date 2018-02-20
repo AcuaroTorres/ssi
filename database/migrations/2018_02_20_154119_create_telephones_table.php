@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTelefonosTable extends Migration
+class CreateTelephonesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateTelefonosTable extends Migration
      */
     public function up()
     {
-        Schema::create('telefonos', function (Blueprint $table) {
+        Schema::create('telephones', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('numero')->unique();
+            $table->integer('number')->unique();
             $table->integer('minsal')->unique();
             $table->integer('user_id')->nullable();
             $table->timestamps();
@@ -29,6 +29,6 @@ class CreateTelefonosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('telefonos');
+        Schema::dropIfExists('telephones');
     }
 }

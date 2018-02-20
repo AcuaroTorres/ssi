@@ -16,6 +16,16 @@
 		<label for="email">Correo</label>
 		<input type="email" class="form-control" name="email" value="{{$user->email}}">
 	</div>
+
+	<fieldset class="form-group">
+		<label for="forCargo">Cargo</label>
+		<select class="custom-select" multiple="" id="forCargo" name="cargos[]">
+			@foreach($cargos as $cargo)
+			<option value="{{ $cargo->id }}"> {{ $cargo->name }} </option>
+			@endforeach
+		</select>
+	</fieldset>
+
 	<div class="form-group d-inline">
 		<button type="submit" class="btn btn-sm btn-primary">
 		<span class="fas fa-save" aria-hidden="true"></span> Actualizar</button>
