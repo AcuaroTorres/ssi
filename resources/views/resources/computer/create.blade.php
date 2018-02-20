@@ -6,7 +6,7 @@
 
 <h3>Crear nuevo Computador</h3>
 
-<form method="POST" class="form-horizontal" action="{{ route('resources.computer.store') }}">
+<form method="POST" class="form-horizontal" action="{{ route('resources.computers.store') }}">
 	{{ csrf_field() }}
 	
 	<fieldset class="form-group">
@@ -31,7 +31,7 @@
     
     <button type="submit" class="btn btn-primary">Crear</button>
     
-    <a href="{{ route('resources.computer.index') }}" class="btn btn-outline-dark">Cancelar</a>
+    <a href="{{ route('resources.computers.index') }}" class="btn btn-outline-dark">Cancelar</a>
 
 </form>
 
