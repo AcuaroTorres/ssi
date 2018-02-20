@@ -39,6 +39,14 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
+    public function cargos() {
+        return $this->belongsToMany(rrhh\Cargo::class);
+    }
+
+    public function telefono() {
+        return $this->hasOne(Recurso\Telefono::class);
+    }
+
     /**
     * @param string|array $roles
     */

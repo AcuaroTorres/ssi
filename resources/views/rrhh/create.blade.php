@@ -14,7 +14,7 @@
 
 			<fieldset class="form-group">
 				<label for="formGroupIDInput">ID</label>
-				<input type="number" class="form-control" id="formGroupIDInput" name="id" required="required" value="min="{6" min="{6"} max="99999999" step="">
+				<input type="number" class="form-control" id="formGroupIDInput" name="id" required="required" min="6" max="99999999" step="">
 			</fieldset>
 
 		</div>
@@ -36,6 +36,15 @@
 	<fieldset class="form-group">
 		<label for="formGroupEmailInput">Email</label>
 		<input type="email" class="form-control" id="formGroupEmailInput" placeholder="Email" name="email" required="required">
+	</fieldset>
+
+	<fieldset class="form-group">
+		<label for="forCargo">Cargo</label>
+		<select class="custom-select" multiple="" id="forCargo" name="cargos[]">
+			@foreach($cargos as $cargo)
+			<option value="{{ $cargo->id }}"> {{ $cargo->name }} </option>
+			@endforeach
+		</select>
 	</fieldset>
 
 	<button type="submit" class="btn btn-primary">Crear</button>

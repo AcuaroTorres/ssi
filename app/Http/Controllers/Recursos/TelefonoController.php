@@ -77,7 +77,10 @@ class TelefonoController extends Controller
      */
     public function edit(Telefono $telefono)
     {
-        return view('recursos/telefono/edit')->with('telefono', $telefono);
+        $users = \app\User::All();
+        return view('recursos/telefono/edit')
+            ->with('telefono', $telefono)
+            ->with('users', $users);
     }
 
     /**

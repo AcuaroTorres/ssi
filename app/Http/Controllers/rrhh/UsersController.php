@@ -49,7 +49,8 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('rrhh/create');
+        $cargos = \App\rrhh\Cargo::orderBy('name','asc')->get();
+        return view('rrhh/create')->with('cargos', $cargos);
     }
 
     /**
@@ -59,10 +60,16 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {        
         $user = new User($request->All());
         $user->password = bcrypt($request->id);
         $user->save();
+
+        if ($request->filled('cargos')) {
+            foreach($request->input('cargos') as $key=>$cargo){
+                $user->cargos()->attach($cargo);
+            }
+        }
 
         $user->roles()->attach(Role::where('name','Usuario')->first());
 
@@ -103,6 +110,9 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        // Detach all cargos from the user...
+        $user->cargos()->detach();
+
         $user->fill($request->all());
         $user->save();
 
