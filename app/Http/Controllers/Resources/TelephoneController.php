@@ -107,7 +107,7 @@ class TelephoneController extends Controller
 
         session()->flash('success', 'El telefono '.$telephone->number.' ha sido actualizado.');
 
-        return redirect()->route('resources.telephone.index');
+        return redirect()->route('resources.telephones.index');
     }
 
     /**

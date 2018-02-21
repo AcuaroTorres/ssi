@@ -4,8 +4,9 @@
 
 @section('content')
 
-<a href="{{ route('rrhh.organizationalunits.create') }}" class="btn btn-primary mb-4">Crear Unidad Organizacional</a>
+<h3>Unidades organizacionales</h3>
 
+<a href="{{ route('rrhh.organizationalunits.create') }}" class="btn btn-primary mb-4">Crear Unidad Organizacional</a>
 
 <table class="table table-striped">
 	<thead>
