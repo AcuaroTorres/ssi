@@ -18,7 +18,8 @@ class UsersController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
+        /* Middleware Especificado en las rutas por que el directorio no lleva auth */
     }
 
     /**
@@ -40,6 +41,17 @@ class UsersController extends Controller
         */
         return view('rrhh/index')->withUsers($users);
     }
+    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function directory(Request $request)
+    {
+        $users=\App\User::has('telephone')->Search($request->get('name'))->get();
+        return view('rrhh/directory')->withUsers($users);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -59,9 +71,10 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {        
+    {
         $user = new User($request->All());
         $user->password = bcrypt($request->id);
+        $user->save();
         
         if ($request->has('organizationalunit')) {
             if ($request->filled('organizationalunit')) {
@@ -71,8 +84,13 @@ class UsersController extends Controller
                 $user->organizationalunit()->dissociate();
             }
         }
+        
+        if($request->hasFile('photo')){
+            $path = $request->file('photo')
+            ->storeAs('public',$user->id.'.'.$request->file('photo')->clientExtension());
+        }
 
-        $user->save();
+        
 
         $user->roles()->attach(Role::where('name','Usuario')->first());
 

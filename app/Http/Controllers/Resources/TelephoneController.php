@@ -21,27 +21,14 @@ class TelephoneController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function directory()
-    {
-        $telephones = Telephone::whereNotNull('user_id')->get();
-        $users=\App\User::has('telephone')->get();
-        return view('resources/telephone/directory')
-            ->withTelephones($telephones)
-            ->withUsers($users);
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        return view('resources/telephone/create');
+        $users = \app\User::doesnthave('Telephone')->get();
+        return view('resources/telephone/create')->withUsers($users);
     }
 
     /**
@@ -53,6 +40,16 @@ class TelephoneController extends Controller
     public function store(Request $request)
     {
         $telephone = new Telephone($request->All());
+        
+        if ($request->has('user')) {
+            if ($request->filled('user')) {
+                $telephone->user()->associate($request->input('user'));
+            }
+            else {
+                $telephone->user()->dissociate();
+            }
+        }
+
         $telephone->save();
 
         session()->flash('info', 'El telefono '.$telephone->number.' ha sido creado.');
@@ -79,10 +76,8 @@ class TelephoneController extends Controller
      */
     public function edit(Telephone $telephone)
     {
-        $users = \app\User::All();
-        return view('resources/telephone/edit')
-            ->with('telephone', $telephone)
-            ->with('users', $users);
+        $users = \app\User::doesnthave('Telephone')->get();
+        return view('resources/telephone/edit')->withTelephone($telephone)->withUsers($users);
     }
 
     /**

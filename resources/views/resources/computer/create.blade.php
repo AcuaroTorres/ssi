@@ -28,7 +28,19 @@
 		<label for="forIP">Número IP</label>
 		<input type="IP" class="form-control" id="forIP" placeholder="10.x.x.x" name="ip">
 	</fieldset>
-    
+   
+   	<hr class="mt-4">
+
+	<fieldset class="form-group b">
+		<label for="forUsers">Asignar a:</label>	
+		<select class="custom-select" id="forUsers" name="user">
+			<option></option>
+			@foreach($users as $user)
+				<option value="{{ $user->id }}">{{ $user->name }}</option>
+			@endforeach
+		</select>
+	</fieldset>
+	
     <button type="submit" class="btn btn-primary">Crear</button>
     
     <a href="{{ route('resources.computers.index') }}" class="btn btn-outline-dark">Cancelar</a>

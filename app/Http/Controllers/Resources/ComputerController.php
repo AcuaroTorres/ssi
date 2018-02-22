@@ -27,7 +27,8 @@ class ComputerController extends Controller
      */
     public function create()
     {
-        return view('resources/computer/create');
+        $users = \app\User::doesnthave('Computer')->get();
+        return view('resources/computer/create')->withUsers($users);
     }
 
     /**
@@ -39,11 +40,21 @@ class ComputerController extends Controller
     public function store(Request $request)
     {
         $computer = new computer($request->All());
+        
+        if ($request->has('user')) {
+            if ($request->filled('user')) {
+                $computer->user()->associate($request->input('user'));
+            }
+            else {
+                $computer->user()->dissociate();
+            }
+        }
+
         $computer->save();
 
         session()->flash('info', 'El computador '.$computer->brand.' ha sido creado.');
 
-        return redirect()->route('resources.computer.index');
+        return redirect()->route('resources.computers.index');
     }
 
     /**
@@ -65,7 +76,7 @@ class ComputerController extends Controller
      */
     public function edit(Computer $computer)
     {
-        $users = \app\User::All();
+        $users = \app\User::doesnthave('Computer')->get();
         return view('resources/computer/edit')
             ->with('computer', $computer)
             ->with('users', $users);
@@ -95,7 +106,7 @@ class ComputerController extends Controller
 
         session()->flash('success', 'El computador '.$computer->brand.' ha sido actualizado.');
 
-        return redirect()->route('resources.computer.index');
+        return redirect()->route('resources.computers.index');
     }
 
     /**
@@ -110,6 +121,6 @@ class ComputerController extends Controller
 
         session()->flash('success', 'El computador '.$computer->brand.' ha sido eliminado');
 
-        return redirect()->route('resources.computer.index');
+        return redirect()->route('resources.computers.index');
     }
 }

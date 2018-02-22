@@ -19,6 +19,15 @@
 		<input type="integer" class="form-control" id="forMinsal" placeholder="Anexo Minsal" name="minsal" required="required">
 	</fieldset>
 
+	<fieldset class="form-group">
+		<label for="forUsers">Asignar a:</label>	
+		<select class="custom-select" id="forUsers" name="user">
+			<option></option>
+			@foreach($users as $user)
+				<option value="{{ $user->id }}">{{ $user->name }}</option>
+			@endforeach
+		</select>
+	</fieldset>
     
     <button type="submit" class="btn btn-primary">Crear</button>
     

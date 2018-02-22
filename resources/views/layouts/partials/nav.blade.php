@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-nav-gobierno">
 
     <!-- Branding Image -->
     <a class="navbar-brand" href="{{ route('home') }}">{{ config('app.name') }}</a>
@@ -17,7 +17,7 @@
         <ul class="navbar-nav mr-auto">
             @auth
             
-            <li class="nav-item"><a class="nav-link" href="{{ route('resources.telephone.directory') }}">
+            <li class="nav-item"><a class="nav-link" href="{{ route('rrhh.users.directory') }}">
                 <i class="fas fa-address-book"></i> </a></li>
 
             <li class="nav-item dropdown 
@@ -73,7 +73,7 @@
             </li>
             
             @else
-            <li class="nav-item"><a class="nav-link" href="{{ route('resources.telephone.directory') }}">
+            <li class="nav-item"><a class="nav-link" href="{{ route('rrhh.users.directory') }}">
                 <i class="fas fa-address-book"></i> Telefonos</a></li>
             
             @endauth

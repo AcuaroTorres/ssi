@@ -20,24 +20,25 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('password')->as('password.')->group(function(){
-	Route::get('edit', 'rrhh\UsersController@editPassword')->name('edit');
-	Route::put('update', 'rrhh\UsersController@updatePassword')->name('update');
+	Route::get('edit', 'rrhh\UsersController@editPassword')->name('edit')->middleware('auth');
+	Route::put('update', 'rrhh\UsersController@updatePassword')->name('update')->middleware('auth');
 });
 
 Route::prefix('rrhh')->as('rrhh.')->group(function(){
-	Route::put('users/{user}/password', 'rrhh\UsersController@resetPassword')->name('users.password.reset');
+	Route::put('users/{user}/password', 'rrhh\UsersController@resetPassword')->name('users.password.reset')->middleware('auth');
 
 	Route::get('users/{user}/roles', 'rrhh\RolesController@index')->name('roles.index');
 	Route::post('users/{user}/roles','rrhh\RolesController@attach')->name('roles.attach');
 	
-	Route::resource('organizationalunits','rrhh\OrganizationalUnitController')->middleware('auth');
+	Route::get('users/directory', 'rrhh\UsersController@directory')->name('users.directory');
 
 	Route::resource('users','rrhh\UsersController')->middleware('auth');
+
+	Route::resource('organizationalunits','rrhh\OrganizationalUnitController')->middleware('auth');
 
 });
 
 Route::prefix('resources')->as('resources.')->group(function(){
-	Route::get('telephones/directory', 'Resources\TelephoneController@directory')->name('telephone.directory');
 	Route::resource('telephones','Resources\TelephoneController')->middleware('auth');
 	Route::resource('computers','Resources\ComputerController')->middleware('auth');
 });
