@@ -13,16 +13,19 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
-			<th>Marca</th>
-			<th>Modelo</th>
-			<th>Serial</th>
-			<th>IP</th>
-			<th>Asociado a:</th>
+			<th scope="col"></th>
+			<th scope="col">Marca</th>
+			<th scope="col">Modelo</th>
+			<th scope="col">Serial</th>
+			<th scope="col">IP</th>
+			<th scope="col">Asociado a:</th>
+			<th scope="col">Accion</th>
 		</tr>
 	</thead>
 	<tbody>
-		@foreach($computers as $computer)
+		@foreach($computers as $key => $computer)
 		<tr>
+			<td>{{ ++$key }} </td>
 			<td>{{ $computer->brand }}</td>
 			<td>{{ $computer->model }}</td>
 			<td>{{ $computer->serial }}</td>

@@ -13,17 +13,17 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
-			<th>ID</th>
-			<th>Número</th>
-			<th>Minsal</th>
-			<th>Asociado a</th>
-			<th>Accion</th>
+			<th scope="col"></th>
+			<th scope="col">Número</th>
+			<th scope="col">Minsal</th>
+			<th scope="col">Asociado a</th>
+			<th scope="col">Accion</th>
 		</tr>
 	</thead>
 	<tbody>
-		@foreach($telephones as $telephone)
+		@foreach($telephones as $key => $telephone)
 		<tr>
-			<td>{{ $telephone->id }}</td>
+			<td>{{ ++$key }} </td>
 			<td>{{ $telephone->number }}</td>
 			<td>{{ $telephone->minsal }}</td>
 			<td>{{ @$telephone->user->name ?: '' }}</td>

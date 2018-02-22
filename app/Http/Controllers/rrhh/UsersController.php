@@ -49,7 +49,7 @@ class UsersController extends Controller
      */
     public function directory(Request $request)
     {
-        $users=\App\User::has('telephone')->Search($request->get('name'))->get();
+        $users=\App\User::has('telephone')->Search($request->get('name'))->orderBy('name','Asc')->paginate(20);
         return view('rrhh/directory')->withUsers($users);
     }
 
@@ -90,7 +90,6 @@ class UsersController extends Controller
             ->storeAs('public',$user->id.'.'.$request->file('photo')->clientExtension());
         }
 
-        
 
         $user->roles()->attach(Role::where('name','Usuario')->first());
 

@@ -4,8 +4,6 @@
 
 @section('content')
 
-<h3>Home</h3>
-
 <div class="row">
 
     <div class="col-8">
@@ -27,11 +25,10 @@
     <div class="col">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Administrador</h5>
                 @if(Auth::user()->hasRole('Admin'))
-                <h6 class="card-subtitle mb-2 text-muted">Ha accedido como administrador</h6>
+                    <h5 class="card-title">Administrador</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Ha accedido como administrador</h6>
                 @endif
-                <a href="#" class="card-link">link</a>
             </div>
         </div>
     </div>

@@ -59,4 +59,6 @@
 	</div>
 	@endforeach
 </div>
+{{ $users->render() }}
+
 @endsection

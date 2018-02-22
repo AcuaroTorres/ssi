@@ -15,11 +15,11 @@
         <!-- Authentication Links -->
 
         <ul class="navbar-nav mr-auto">
-            @auth
-            
-            <li class="nav-item"><a class="nav-link" href="{{ route('rrhh.users.directory') }}">
-                <i class="fas fa-address-book"></i> </a></li>
+            <li class="nav-item  @if(Route::currentRouteName()=='rrhh.users.directory')active @endif">
+                <a class="nav-link" href="{{ route('rrhh.users.directory') }}">
+                <i class="fas fa-address-book"></i> Telefonos</a></li>
 
+            @auth
             <li class="nav-item dropdown 
                 @if(Route::currentRouteName()=='rrhh.users.index' OR
                     Route::currentRouteName()=='rrhh.users.create' OR
@@ -70,12 +70,7 @@
 
                 </div>
 
-            </li>
-            
-            @else
-            <li class="nav-item"><a class="nav-link" href="{{ route('rrhh.users.directory') }}">
-                <i class="fas fa-address-book"></i> Telefonos</a></li>
-            
+            </li>            
             @endauth
 
         </ul>
