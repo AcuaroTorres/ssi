@@ -12,3 +12,6 @@ composer dump-autoload // Para que funcionen los seeders nuevos
 
 // Recordar credenciales en git
 $ git config --global credential.helper store
+
+php.ini
+extension=fileinfo
