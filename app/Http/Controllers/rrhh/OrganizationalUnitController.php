@@ -27,7 +27,7 @@ class OrganizationalUnitController extends Controller
      */
     public function create()
     {
-        //
+        return view('rrhh/organizationalunit/create');
     }
 
     /**
@@ -38,7 +38,13 @@ class OrganizationalUnitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $organizationalunit = new OrganizationalUnit($request->All());
+
+        $organizationalunit->save();
+
+        session()->flash('info', 'La Unidad Organizacional '.$organizationalunit->name.' ha sido creada.');
+
+        return redirect()->route('rrhh.organizationalunit.index');
     }
 
     /**
@@ -60,7 +66,7 @@ class OrganizationalUnitController extends Controller
      */
     public function edit(OrganizationalUnit $organizationalUnit)
     {
-        //
+        return view('rrhh/organizationalunit/edit');
     }
 
     /**
@@ -72,7 +78,13 @@ class OrganizationalUnitController extends Controller
      */
     public function update(Request $request, OrganizationalUnit $organizationalUnit)
     {
-        //
+        $organizationalunit->fill($request->all());
+
+        $organizationalunit->save();
+
+        session()->flash('info', 'La Unidad Organizacional '.$organizationalunit->name.' ha sido actualizada.');
+
+        return redirect()->route('rrhh.organizationalunit.index');
     }
 
     /**
@@ -83,6 +95,10 @@ class OrganizationalUnitController extends Controller
      */
     public function destroy(OrganizationalUnit $organizationalUnit)
     {
-        //
+        $organizationalunit->delete();
+
+        session()->flash('success', 'La Unidad Organizacional '.$organizationalunit->name.' ha sido eliminado.');
+
+        return redirect()->route('rrhh.organizationalunit.index');
     }
 }
