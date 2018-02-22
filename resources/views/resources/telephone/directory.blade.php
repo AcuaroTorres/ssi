@@ -6,6 +6,13 @@
 
 <h3>Directorio Telefónico</h3>
 
+@foreach($users as $user)
+	<address class="border border p-1">
+		<strong>{{ $user->name }}</strong>
+		<br>
+	</address>
+@endforeach
+
 @foreach($telephones as $telephone)
 
 	<address class="border border p-1">

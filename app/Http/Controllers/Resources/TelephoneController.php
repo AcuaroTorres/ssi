@@ -28,8 +28,10 @@ class TelephoneController extends Controller
     public function directory()
     {
         $telephones = Telephone::whereNotNull('user_id')->get();
+        $users=\App\User::has('telephone')->get();
         return view('resources/telephone/directory')
-            ->with('telephones', $telephones);
+            ->withTelephones($telephones)
+            ->withUsers($users);
     }
 
     /**
