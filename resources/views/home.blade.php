@@ -24,11 +24,12 @@
 
     </div>
 
+    @auth
     <div class="col">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Dashboard</h5>
-                
+
                 @if(Auth::user()->hasRole('Admin'))
                 <h6 class="card-subtitle mb-2 text-muted">Acceso como Administrador</h6>
                 @endif
@@ -39,7 +40,8 @@
             </div>
         </div>
     </div>
-
+    @endauth
+    
 </div>
 
 @endsection

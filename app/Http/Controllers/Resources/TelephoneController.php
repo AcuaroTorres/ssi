@@ -55,7 +55,7 @@ class TelephoneController extends Controller
 
         session()->flash('info', 'El telefono '.$telephone->number.' ha sido creado.');
 
-        return redirect()->route('resources.telephone.index');
+        return redirect()->route('resources.telephones.index');
     }
 
     /**
@@ -122,6 +122,6 @@ class TelephoneController extends Controller
 
         session()->flash('success', 'El telefono '.$telephone->number.' ha sido eliminado');
 
-        return redirect()->route('resources.telephone.index');
+        return redirect()->route('resources.telephones.index');
     }
 }

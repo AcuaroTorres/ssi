@@ -39,12 +39,18 @@
 	</fieldset>
 
 	<fieldset class="form-group">
-		<label for="forCargo">Cargo</label>
-		<select class="custom-select" multiple="" id="forCargo" name="cargos[]">
-			@foreach($cargos as $cargo)
-			<option value="{{ $cargo->id }}"> {{ $cargo->name }} </option>
+		<label for="forOrganizationalUnit">Unidad Organizacional</label>
+		<select class="custom-select" id="forOrganizationalUnit" name="organizationalunit">
+			<option></option>
+			@foreach($organizationalunits as $organizationalunit)
+				<option value="{{$organizationalunit->id}}" >{{ $organizationalunit->name }}</option>
 			@endforeach
 		</select>
+	</fieldset>
+	
+	<fieldset class="form-group">
+		<label for="forPosition">Cargo/Funcion</label>
+		<input type="text" class="form-control" id="forPosition" placeholder="Cargo/Funcion" name="position">
 	</fieldset>
 
 	<button type="submit" class="btn btn-primary">Crear</button>

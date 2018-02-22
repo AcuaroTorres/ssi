@@ -32,8 +32,6 @@ Route::prefix('rrhh')->as('rrhh.')->group(function(){
 	
 	Route::resource('organizationalunits','rrhh\OrganizationalUnitController')->middleware('auth');
 
-	Route::resource('cargos','rrhh\CargoController')->middleware('auth');
-
 	Route::resource('users','rrhh\UsersController')->middleware('auth');
 
 });

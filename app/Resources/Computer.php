@@ -16,11 +16,9 @@ class Computer extends Model
         'brand', 'model', 'serial', 'ip'
     ];
 
-    
     public function user() {
     	return $this->belongsTo('\App\User');
     }
-
 
     use SoftDeletes;
     /**

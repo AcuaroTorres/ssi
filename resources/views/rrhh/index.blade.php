@@ -27,7 +27,8 @@
 		<tr>
 			<th scope="col">RUN</th>
 			<th scope="col">Nombre</th>
-			<th scope="col" class="hidden-xs">Roles</th>
+			<th scope="col">Unidad Organizacional</th>
+			<th scope="col">Cargo/Funcion</th>
 			<th scope="col">Accion</th>
 		</tr>
 	</thead>
@@ -36,11 +37,8 @@
 		<tr>
 			<th scope="row">{{ $user->runFormat() }}</td>
 			<td>{{ $user->name }}</td>
-			<td class="hidden-xs">
-			@foreach($user->roles as $rol)
-				<span class="label label-<?=($rol->name == 'Admin')?'danger':'primary';?>"> {{ $rol->name }} </span>&nbsp;
-			@endforeach
-			</td>
+			<td>{{ @$user->organizationalunit->name ?: ''}}</td>
+			<td>{{ $user->position }}</td>
 			<td>
 				<a href="{{ route('rrhh.users.edit',$user->id) }}" class="btn btn-outline-secondary">
 				<span class="fas fa-edit" aria-hidden="true"></span></a>			

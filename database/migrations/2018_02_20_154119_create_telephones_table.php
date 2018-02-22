@@ -19,6 +19,7 @@ class CreateTelephonesTable extends Migration
             $table->integer('minsal')->unique();
             $table->integer('user_id')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -79,11 +79,8 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
-                    @auth
                         <a href="{{ url('/home') }}">Home</a>
-                    @else
                         <a href="{{ route('login') }}">Iniciar Sesión</a>
-                    @endauth
                 </div>
             @endif
 
@@ -92,7 +89,7 @@
                     {{ config('app.name') }}
                 </div>
 
-                <footer>© Sistema de administración general.</footer>
+                <footer>© Servicio de Salud Iquique 2018.</footer>
             </div>
         </div>
     </body>

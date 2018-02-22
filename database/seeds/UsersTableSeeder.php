@@ -22,6 +22,7 @@ class UsersTableSeeder extends Seeder
         $user->name = "Administrador";
         $user->email = "soporte.ssi@redsalud.gob.cl";
         $user->password = bcrypt('admin');
+        $user->organizational_unit_id = 2;
         $user->save();
         $user->roles()->attach($admin_role);
         $user->roles()->attach($usuario_role);
@@ -31,7 +32,9 @@ class UsersTableSeeder extends Seeder
         $user->dv = 7;
         $user->name = "Alvaro Torres Fuchslocher";
         $user->email = "alvaro.torres@redsalud.gob.cl";
-        $user->password = bcrypt('pluto');
+        $user->password = bcrypt('admin');
+        $user->position = "Profesional SIDRA";
+        $user->organizational_unit_id = 2;
         $user->save();
         $user->roles()->attach($admin_role);
         $user->roles()->attach($usuario_role);

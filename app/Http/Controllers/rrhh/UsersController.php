@@ -38,8 +38,7 @@ class UsersController extends Controller
             
         });
         */
-        return view('rrhh/index')
-            ->with('users', $users);
+        return view('rrhh/index')->withUsers($users);
     }
 
     /**
@@ -49,8 +48,8 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $cargos = \App\rrhh\Cargo::orderBy('name','asc')->get();
-        return view('rrhh/create')->with('cargos', $cargos);
+        $organizationalunits = \App\rrhh\OrganizationalUnit::All();
+        return view('rrhh/create')->withOrganizationalunits($organizationalunits);
     }
 
     /**
@@ -63,13 +62,17 @@ class UsersController extends Controller
     {        
         $user = new User($request->All());
         $user->password = bcrypt($request->id);
-        $user->save();
-
-        if ($request->filled('cargos')) {
-            foreach($request->input('cargos') as $key=>$cargo){
-                $user->cargos()->attach($cargo);
+        
+        if ($request->has('organizationalunit')) {
+            if ($request->filled('organizationalunit')) {
+                $user->organizationalunit()->associate($request->input('organizationalunit'));
+            }
+            else {
+                $user->organizationalunit()->dissociate();
             }
         }
+
+        $user->save();
 
         $user->roles()->attach(Role::where('name','Usuario')->first());
 
@@ -97,10 +100,10 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        $cargos = \App\rrhh\Cargo::orderBy('name','asc')->get();
+        $organizationalunits = \App\rrhh\OrganizationalUnit::All();
         return view('rrhh.edit')
-            ->with('user',$user)
-            ->with('cargos',$cargos);
+            ->withUser($user)
+            ->withOrganizationalunits($organizationalunits);
     }
 
     /**
@@ -112,20 +115,17 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        if ($request->has('cargos')) {
-            if ($request->filled('cargos')) {
-                foreach($request->input('cargos') as $key=>$cargo){
-                    $user->cargos()->attach($cargo);
-                }
+        $user->fill($request->all());
+
+        if ($request->has('organizationalunit')) {
+            if ($request->filled('organizationalunit')) {
+                $user->organizationalunit()->associate($request->input('organizationalunit'));
             }
             else {
-                // Detach all cargos from the user...
-                $user->cargos()->detach();
+                $user->organizationalunit()->dissociate();
             }
         }
-        
 
-        $user->fill($request->all());
         $user->save();
 
         session()->flash('success', 'El usuario '.$user->name.' ha sido actualizado.');

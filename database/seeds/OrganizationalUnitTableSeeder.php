@@ -16,11 +16,11 @@ class OrganizationalUnitTableSeeder extends Seeder
         $organizationunit->save();
 
         $organizationunit = new App\rrhh\OrganizationalUnit();
-        $organizationunit->name = 'Departamento de Planificacion';
+        $organizationunit->name = 'Departamento TIC';
         $organizationunit->save();
 
         $organizationunit = new App\rrhh\OrganizationalUnit();
-        $organizationunit->name = 'Departamento TIC';
+        $organizationunit->name = 'Departamento de Planificacion y Control de Redes';
         $organizationunit->save();
 
         $organizationunit = new App\rrhh\OrganizationalUnit();

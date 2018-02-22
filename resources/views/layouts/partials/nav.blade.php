@@ -11,14 +11,20 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Left Side Of Navbar -->
-        @auth
+
+        <!-- Authentication Links -->
+
         <ul class="navbar-nav mr-auto">
+            @auth
+            
+            <li class="nav-item"><a class="nav-link" href="{{ route('resources.telephone.directory') }}">
+                <i class="fas fa-address-book"></i> </a></li>
 
             <li class="nav-item dropdown 
                 @if(Route::currentRouteName()=='rrhh.users.index' OR
                     Route::currentRouteName()=='rrhh.users.create' OR
-                    Route::currentRouteName()=='rrhh.cargos.index' OR
-                    Route::currentRouteName()=='rrhh.cargos.create' )active @endif">
+                    Route::currentRouteName()=='rrhh.organizationalunits.index' OR
+                    Route::currentRouteName()=='rrhh.organizationalunits.create' )active @endif">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">RRHH</a>
 
@@ -32,11 +38,6 @@
                         @if(Route::currentRouteName()=='rrhh.organizationalunits.index' OR
                             Route::currentRouteName()=='rrhh.organizationalunits.create')active @endif" 
                         href="{{ route('rrhh.organizationalunits.index') }}">Unidades organizacionales</a>
-
-                    <a class="dropdown-item 
-                        @if(Route::currentRouteName()=='rrhh.cargos.index' OR
-                            Route::currentRouteName()=='rrhh.cargos.create')active @endif" 
-                        href="{{ route('rrhh.cargos.index') }}">Cargos</a>
 
                 </div>
 
@@ -70,10 +71,14 @@
                 </div>
 
             </li>
-
+            
+            @else
+            <li class="nav-item"><a class="nav-link" href="{{ route('resources.telephone.directory') }}">
+                <i class="fas fa-address-book"></i> Telefonos</a></li>
+            
+            @endauth
 
         </ul>
-        @endauth
 
         <!-- Right Side Of Navbar -->
         <ul class="navbar-nav ml-auto">
