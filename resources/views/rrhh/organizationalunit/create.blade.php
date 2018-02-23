@@ -4,19 +4,19 @@
 
 @section('content')
 
-<h3>Crear nuevo Computador</h3>
+<h3>Crear nuevo Teléfono</h3>
 
-<form method="POST" class="form-horizontal" action="{{ route('rrhh.organizationalunits.store') }}">
+<form method="POST" class="form-horizontal" action="{{ route('rrhh.organizationalUnits.store') }}">
 	{{ csrf_field() }}
 	
 	<fieldset class="form-group">
-		<label for="forOrganizationalunit">Marca</label>
-		<input type="text" class="form-control" id="forOrganizationalunit" placeholder="Nombre de la Unidad Organizacional" name="name" required="required">
+		<label for="forName">Nombre</label>
+		<input type="text" class="form-control" id="forName" placeholder="Nombre de la unidad organizacional" name="name" required="required">
 	</fieldset>
-	
+
     <button type="submit" class="btn btn-primary">Crear</button>
     
-    <a href="{{ route('rrhh.organizationalunits.index') }}" class="btn btn-outline-dark">Cancelar</a>
+    <a href="{{ route('rrhh.organizationalUnits.index') }}" class="btn btn-outline-dark">Cancelar</a>
 
 </form>
 

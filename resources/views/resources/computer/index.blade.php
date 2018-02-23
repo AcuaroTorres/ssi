@@ -4,11 +4,9 @@
 
 @section('content')
 
-<h3 class="inline">Computadores
+<h3>Computadores</h3> 
 
-<a href="{{ route('resources.computers.create') }}" class="btn btn-primary">Crear</a>
-</h3>
-<br>
+<a href="{{ route('resources.computers.create') }}" class="btn btn-primary mb-4"> Crear</a>
 
 <table class="table table-striped">
 	<thead>
@@ -25,7 +23,7 @@
 	<tbody>
 		@foreach($computers as $key => $computer)
 		<tr>
-			<td>{{ ++$key }} </td>
+			<td scope="row">{{ ++$key }} </td>
 			<td>{{ $computer->brand }}</td>
 			<td>{{ $computer->model }}</td>
 			<td>{{ $computer->serial }}</td>

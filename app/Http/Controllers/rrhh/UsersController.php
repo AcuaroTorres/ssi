@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\rrhh\updatePassword;
+use App\Http\Requests\rrhh\StoreUser;
 
 class UsersController extends Controller
 {
@@ -60,7 +61,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $organizationalunits = \App\rrhh\OrganizationalUnit::All();
+        $organizationalunits = \App\rrhh\OrganizationalUnit::All()->sortBy('name');
         return view('rrhh/create')->withOrganizationalunits($organizationalunits);
     }
 
@@ -70,11 +71,10 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUser $request)
     {
         $user = new User($request->All());
         $user->password = bcrypt($request->id);
-        $user->save();
         
         if ($request->has('organizationalunit')) {
             if ($request->filled('organizationalunit')) {
@@ -84,7 +84,9 @@ class UsersController extends Controller
                 $user->organizationalunit()->dissociate();
             }
         }
-        
+
+        $user->save();
+
         if($request->hasFile('photo')){
             $path = $request->file('photo')
             ->storeAs('public',$user->id.'.'.$request->file('photo')->clientExtension());
@@ -117,7 +119,7 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        $organizationalunits = \App\rrhh\OrganizationalUnit::All();
+        $organizationalunits = \App\rrhh\OrganizationalUnit::All()->sortBy('name');
         return view('rrhh.edit')
             ->withUser($user)
             ->withOrganizationalunits($organizationalunits);

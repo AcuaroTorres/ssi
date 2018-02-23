@@ -4,6 +4,8 @@
 
 @section('content')
 
+<h3>Editar Computador</h3>
+
 <form method="POST" class="form-horizontal" action="{{ route('resources.computers.update',$computer->id) }}">
 	{{ method_field('PUT') }} {{ csrf_field() }}
 

@@ -6,18 +6,27 @@
 
 <h3>Editar Unidad Organizacional</h3>
 
-<form method="POST" class="form-horizontal" action="{{ route('rrhh.organizationalunits.store') }}">
-	{{ csrf_field() }}
-	
-	<fieldset class="form-group">
-		<label for="forOrganizationalunit">Marca</label>
-		<input type="text" class="form-control" id="forOrganizationalunit" placeholder="Nombre de la Unidad Organizacional" name="name" value="" required="required">
-	</fieldset>
-	
-    <button type="submit" class="btn btn-primary">Crear</button>
-    
-    <a href="{{ route('rrhh.organizationalunits.index') }}" class="btn btn-outline-dark">Cancelar</a>
+<form method="POST" class="form-horizontal" action="{{ route('rrhh.organizationalUnits.update',$organizationalUnit->id) }}">
+	{{ method_field('PUT') }} {{ csrf_field() }}
 
-</form>
+	<fieldset class="form-group">
+		<label for="forName">Nombre</label>
+		<input type="text" class="form-control" id="forName" name="name" value="{{ $organizationalUnit->name }}">
+	</fieldset>
+
+	<fieldset class="form-group">
+		<button type="submit" class="btn btn-primary">
+			<span class="fas fa-save" aria-hidden="true"></span> Actualizar</button>
+		
+		</form>
+
+		<a href="{{ route('rrhh.organizationalUnits.index') }}" class="btn btn-outline-dark">Cancelar</a>
+
+		<form method="POST" action="{{ route('rrhh.organizationalUnits.destroy', $organizationalUnit->id) }}" class="d-inline">
+			{{ method_field('DELETE') }} {{ csrf_field() }}
+			<button class="btn btn-danger"><span class="fas fa-trash" aria-hidden="true"></span> Eliminar</button>
+		</form>
+		
+	</fieldset>
 
 @endsection

@@ -13,9 +13,9 @@ class OrganizationalUnit extends Model
      * @var array
      */
     protected $fillable = [
-        'name'
+        'name',
     ];
-    
+
     public function user() {
     	return $this->hasMany('\App\User');
     }

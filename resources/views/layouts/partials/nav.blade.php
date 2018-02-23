@@ -23,8 +23,8 @@
             <li class="nav-item dropdown 
                 @if(Route::currentRouteName()=='rrhh.users.index' OR
                     Route::currentRouteName()=='rrhh.users.create' OR
-                    Route::currentRouteName()=='rrhh.organizationalunits.index' OR
-                    Route::currentRouteName()=='rrhh.organizationalunits.create' )active @endif">
+                    Route::currentRouteName()=='rrhh.organizationalUnits.index' OR
+                    Route::currentRouteName()=='rrhh.organizationalUnits.create' )active @endif">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">RRHH</a>
 
@@ -35,9 +35,9 @@
                         href="{{ route('rrhh.users.index') }}">Usuarios</a>
 
                     <a class="dropdown-item 
-                        @if(Route::currentRouteName()=='rrhh.organizationalunits.index' OR
-                            Route::currentRouteName()=='rrhh.organizationalunits.create')active @endif" 
-                        href="{{ route('rrhh.organizationalunits.index') }}">Unidades organizacionales</a>
+                        @if(Route::currentRouteName()=='rrhh.organizationalUnits.index' OR
+                            Route::currentRouteName()=='rrhh.organizationalUnits.create')active @endif" 
+                        href="{{ route('rrhh.organizationalUnits.index') }}">Unidades organizacionales</a>
 
                 </div>
 
