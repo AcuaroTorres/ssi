@@ -16,6 +16,7 @@ class CreateOrganizationalUnitsTable extends Migration
         Schema::create('organizational_units', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
+            $table->integer('organizational_unit_id')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

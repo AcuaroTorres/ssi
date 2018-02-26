@@ -50,8 +50,16 @@ class UsersController extends Controller
      */
     public function directory(Request $request)
     {
-        $users=\App\User::has('telephone')->Search($request->get('name'))->orderBy('name','Asc')->paginate(20);
-        return view('rrhh/directory')->withUsers($users);
+        if ($request->get('ou')) {
+            $users = \App\User::has('telephone')->where('organizational_unit_id',$request->get('ou'))->orderBy('name')->paginate(20);
+        }
+        else {
+            $users = \App\User::has('telephone')->Search($request->get('name'))->orderBy('name','Asc')->paginate(20);
+        }
+        
+        /* Devuelve sólo Dirección, ya que de él dependen todas las unidades organizacionales hacia abajo */
+        $organizationalUnit = \App\rrhh\OrganizationalUnit::Find(1);
+        return view('rrhh/directory')->withUsers($users)->withOrganizationalUnit($organizationalUnit);
     }
 
     /**

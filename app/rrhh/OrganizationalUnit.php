@@ -13,11 +13,19 @@ class OrganizationalUnit extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
+        'id', 'name', 'organizational_units_id'
     ];
 
     public function user() {
     	return $this->hasMany('\App\User');
+    }
+
+    public function father() {
+        return $this->hasOne('\App\rrhh\OrganizationalUnit','id', 'organizational_unit_id');
+    }
+
+    public function childs() {
+        return $this->hasMany('\App\rrhh\OrganizationalUnit');
     }
 
     use SoftDeletes;

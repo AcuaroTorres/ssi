@@ -23,8 +23,28 @@
 </div>
 
 <div class="row">
-	@foreach($users as $user)
-	<div class="col-md-6">
+	<div class="col-md-7">
+		<b>+</b> <a href="{{ route('rrhh.users.directory') }}?ou={{$organizationalUnit->id}}">{{ $organizationalUnit->name }}</a>
+		<ul>
+			@foreach($organizationalUnit->childs as $child_level_1)
+				<li><a href="{{ route('rrhh.users.directory') }}?ou={{$child_level_1->id}}"> {{$child_level_1->name}} </a></li>
+				<ul>
+					@foreach($child_level_1->childs as $child_level_2)
+						<li><a href="{{ route('rrhh.users.directory') }}?ou={{$child_level_2->id}}">{{ $child_level_2->name }}</a></li>
+							<ul>
+								@foreach($child_level_2->childs as $child_level_3)
+									<li><a href="{{ route('rrhh.users.directory') }}?ou={{$child_level_3->id}}">{{ $child_level_3->name }}</a></li>
+								@endforeach
+							</ul>
+					@endforeach
+				</ul>
+			@endforeach
+		</ul>
+	</div>
+
+	
+	<div class="col-md-5">
+		@foreach($users as $user)
 		<address class="border border p-1">
 			<strong>{{ $user->name }}</strong>
 			<br>
@@ -56,9 +76,11 @@
 				<abbr title="Anexo Minsal">{{ $user->telephone->minsal }}</abbr>
 
 		</address>
+		@endforeach
+		{{ $users->render() }}
 	</div>
-	@endforeach
+	
 </div>
-{{ $users->render() }}
+
 
 @endsection
