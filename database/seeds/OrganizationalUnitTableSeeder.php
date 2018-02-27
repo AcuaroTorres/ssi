@@ -12,7 +12,7 @@ class OrganizationalUnitTableSeeder extends Seeder
     public function run()
     {
         $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 1, 'name' => 'Dirección', 'organizational_unit_id' => NULL]);
-            $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 2, 'name' => 'Subdireccion de Gestion Asistencial', 'organizational_unit_id' => 1]);
+            $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 2, 'name' => 'Subdirección de Gestion Asistencial', 'organizational_unit_id' => 1]);
                 $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 15, 'name' => 'Departamento de Red de Salud Mental', 'organizational_unit_id' => 2]);
                     $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 30, 'name' => 'Gestión de Establecimientos y Dispositivos', 'organizational_unit_id' => 15]);
                     $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 31, 'name' => 'Gestión de Recursos de Salud Mental', 'organizational_unit_id' => 15]);
@@ -33,17 +33,17 @@ class OrganizationalUnitTableSeeder extends Seeder
                     $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 42, 'name' => 'Unidad Epidemiología', 'organizational_unit_id' => 19]);
                     $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 43, 'name' => 'Unidad de Gestión de Información', 'organizational_unit_id' => 19]);
                     $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 44, 'name' => 'Unidad de Gestión y Control', 'organizational_unit_id' => 19]);
-                $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 20, 'name' => 'Consultorio Generar urbano Dr. Hector Reyno', 'organizational_unit_id' => 2]);
+                $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 20, 'name' => 'Consultorio General urbano Dr. Hector Reyno', 'organizational_unit_id' => 2]);
                 $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 21, 'name' => 'P.E.S.P.I.', 'organizational_unit_id' => 2]);
                 $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 22, 'name' => 'P.R.A.I.S.', 'organizational_unit_id' => 2]);
-            $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 3, 'name' => 'Subdireccion de Recursos Físicos y Financieros', 'organizational_unit_id' => 1]);
+            $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 3, 'name' => 'Subdirección de Recursos Físicos y Financieros', 'organizational_unit_id' => 1]);
                 $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 23, 'name' => 'Departamento de Gestión de Recursos Físicos e Inversiones de la Red', 'organizational_unit_id' => 3]);
                 $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 24, 'name' => 'Departamento de Gestión de Abastecimiento y Logística', 'organizational_unit_id' => 3]);
                 $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 25, 'name' => 'Departamento de Gestión Financiera', 'organizational_unit_id' => 3]);
                     $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 45, 'name' => 'Sección de Planificación, Análisis y Control Financiera y Presupuestaria', 'organizational_unit_id' => 25]);
                     $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 46, 'name' => 'Sercción de Cobranzas', 'organizational_unit_id' => 25]);
                     $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 47, 'name' => 'Sección de Contabilidad', 'organizational_unit_id' => 25]);
-            $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 4, 'name' => 'Subdireccion de Recursos Humanos', 'organizational_unit_id' => 1]);
+            $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 4, 'name' => 'Subdirección de Recursos Humanos', 'organizational_unit_id' => 1]);
                 $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 26, 'name' => 'Departamento de Gestión de Recursos Humanos', 'organizational_unit_id' => 4]);
                     $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 48, 'name' => 'Unidad de Personal y Ciclo de Vida laboral', 'organizational_unit_id' => 26]);
                     $organizationalunit = App\rrhh\OrganizationalUnit::create(['id' => 49, 'name' => 'Unidad Formación y Capacitación', 'organizational_unit_id' => 26]);

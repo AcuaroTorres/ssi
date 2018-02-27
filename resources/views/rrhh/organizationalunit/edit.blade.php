@@ -15,6 +15,15 @@
 	</fieldset>
 
 	<fieldset class="form-group">
+		<label for="forFather">Depende de</label>	
+		<select class="custom-select" id="forFather" name="father">
+			@foreach($organizationalUnits as $ou)
+				<option value="{{ $ou->id }}" @if ($organizationalUnit == $ou->father) selected="selected" @endif>{{ $ou->name }}</option>
+			@endforeach
+		</select>
+	</fieldset>
+
+	<fieldset class="form-group">
 		<button type="submit" class="btn btn-primary">
 			<span class="fas fa-save" aria-hidden="true"></span> Actualizar</button>
 		

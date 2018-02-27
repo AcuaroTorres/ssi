@@ -27,7 +27,8 @@ class OrganizationalUnitController extends Controller
      */
     public function create()
     {
-        return view('rrhh/organizationalunit/create');
+        $organizationalUnits = OrganizationalUnit::All();
+        return view('rrhh/organizationalunit/create')->withOrganizationalUnits($organizationalUnits);
     }
 
     /**
@@ -39,6 +40,7 @@ class OrganizationalUnitController extends Controller
     public function store(Request $request)
     {
         $organizationalUnit = new OrganizationalUnit($request->All());
+        $organizationalUnit->father()->associate($request->input('father'));
 
         $organizationalUnit->save();
 
@@ -79,7 +81,7 @@ class OrganizationalUnitController extends Controller
     public function update(Request $request, OrganizationalUnit $organizationalUnit)
     {
         $organizationalUnit->fill($request->all());
-
+        $organizationalUnit->father()->associate($request->input('father'));
         $organizationalUnit->save();
 
         session()->flash('info', 'La unidad organzacional '.$organizationalUnit->name.' ha sido actualizada.');
