@@ -13,7 +13,7 @@ class OrganizationalUnit extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'name', 'organizational_units_id'
+        'name', 'organizational_units_id'
     ];
 
     public function user() {

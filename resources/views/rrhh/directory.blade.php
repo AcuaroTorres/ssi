@@ -25,7 +25,7 @@
 <div class="row">
 	<div class="col-md-7">
 		<b>+</b> <a href="{{ route('rrhh.users.directory') }}?ou={{$organizationalUnit->id}}">{{ $organizationalUnit->name }}</a>
-		<ul>
+		<ul class="small">
 			@foreach($organizationalUnit->childs as $child_level_1)
 				<li><a href="{{ route('rrhh.users.directory') }}?ou={{$child_level_1->id}}"> {{$child_level_1->name}} </a></li>
 				<ul>

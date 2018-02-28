@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\User;
 use App\Role;
+use App\rrhh\OrganizationalUnit;
 
 class UsersTableSeeder extends Seeder
 {
@@ -26,7 +27,9 @@ class UsersTableSeeder extends Seeder
         $user->save();
         $user->roles()->attach($admin_role);
         $user->roles()->attach($usuario_role);
-
+        
+        $ou = OrganizationalUnit::Where('name','Unidad TIC')->get();
+        
         $user = new User();
         $user->id = 15287582;
         $user->dv = 7;
@@ -34,7 +37,7 @@ class UsersTableSeeder extends Seeder
         $user->email = "alvaro.torres@redsalud.gob.cl";
         $user->password = bcrypt('admin');
         $user->position = "Profesional SIDRA";
-        $user->organizational_unit_id = 41;
+        $user->organizationalUnit()->associate($ou);
         $user->save();
         $user->roles()->attach($admin_role);
         $user->roles()->attach($usuario_role);
