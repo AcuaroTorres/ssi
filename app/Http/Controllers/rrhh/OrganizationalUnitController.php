@@ -41,7 +41,6 @@ class OrganizationalUnitController extends Controller
     {
         $organizationalUnit = new OrganizationalUnit($request->All());
         $organizationalUnit->father()->associate($request->input('father'));
-
         $organizationalUnit->save();
 
         session()->flash('info', 'La unidad organzacional '.$organizationalUnit->name.' ha sido creada.');
@@ -68,7 +67,10 @@ class OrganizationalUnitController extends Controller
      */
     public function edit(OrganizationalUnit $organizationalUnit)
     {
-        return view('rrhh/organizationalunit/edit')->withOrganizationalUnit($organizationalUnit);
+        $organizationalUnits = OrganizationalUnit::All();
+        return view('rrhh/organizationalunit/edit')
+            ->withOrganizationalUnit($organizationalUnit)
+            ->withOrganizationalUnits($organizationalUnits);
     }
 
     /**

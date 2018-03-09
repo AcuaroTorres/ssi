@@ -18,7 +18,7 @@
 		<label for="forFather">Depende de</label>	
 		<select class="custom-select" id="forFather" name="father">
 			@foreach($organizationalUnits as $ou)
-				<option value="{{ $ou->id }}" @if ($organizationalUnit == $ou->father) selected="selected" @endif>{{ $ou->name }}</option>
+				<option value="{{ $ou->id }}" @if ($organizationalUnit->father == $ou) selected="selected" @endif>{{ $ou->name }}</option>
 			@endforeach
 		</select>
 	</fieldset>

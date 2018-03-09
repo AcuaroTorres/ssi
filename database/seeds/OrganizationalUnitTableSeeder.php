@@ -34,7 +34,7 @@ class OrganizationalUnitTableSeeder extends Seeder
                     $ou3 = App\rrhh\OrganizationalUnit::create(['name' => 'Establecimientos de Red de Urgencias', 'organizational_unit_id' => $ou2->id]);
 
                 $ou2 = App\rrhh\OrganizationalUnit::create(['name' => 'Departamento de Planificación y Control de Redes', 'organizational_unit_id' => $ou1->id]);
-                    $ou3 = App\rrhh\OrganizationalUnit::create(['name' => 'Unidad TIC', 'organizational_unit_id' => $ou2->id]);
+                    $ou3 = App\rrhh\OrganizationalUnit::create(['name' => 'Unidad de Informática y Tecnología', 'organizational_unit_id' => $ou2->id]);
                     $ou3 = App\rrhh\OrganizationalUnit::create(['name' => 'Unidad Epidemiología', 'organizational_unit_id' => $ou2->id]);
                     $ou3 = App\rrhh\OrganizationalUnit::create(['name' => 'Unidad de Gestión de Información', 'organizational_unit_id' => $ou2->id]);
                     $ou3 = App\rrhh\OrganizationalUnit::create(['name' => 'Unidad de Gestión y Control', 'organizational_unit_id' => $ou2->id]);

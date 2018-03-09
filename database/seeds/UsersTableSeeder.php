@@ -23,12 +23,12 @@ class UsersTableSeeder extends Seeder
         $user->name = "Administrador";
         $user->email = "soporte.ssi@redsalud.gob.cl";
         $user->password = bcrypt('admin');
-        $user->organizational_unit_id = 41;
         $user->save();
         $user->roles()->attach($admin_role);
         $user->roles()->attach($usuario_role);
         
-        $ou = OrganizationalUnit::Where('name','Unidad TIC')->get();
+        $ouTIC = OrganizationalUnit::Where('name','Unidad de Informática y Tecnología')->first();
+        $ouDPCR = OrganizationalUnit::Where('name','Departamento de Planificación y Control de Redes')->first();
         
         $user = new User();
         $user->id = 15287582;
@@ -37,22 +37,22 @@ class UsersTableSeeder extends Seeder
         $user->email = "alvaro.torres@redsalud.gob.cl";
         $user->password = bcrypt('admin');
         $user->position = "Profesional SIDRA";
-        $user->organizationalUnit()->associate($ou);
+        $user->organizationalUnit()->associate($ouTIC);
         $user->save();
         $user->roles()->attach($admin_role);
         $user->roles()->attach($usuario_role);
 
         $user = User::Create(
-            ['id'=>10278387, 'dv'=>5, 'name'=>'José Donoso Carrera','email'=>'jose.donosoc@resalud.gob.cl','password'=>bcrypt('password'), 'position'=>'Jefe','organizational_unit_id'=>19]);
+            ['id'=>10278387, 'dv'=>5, 'name'=>'José Donoso Carrera','email'=>'jose.donosoc@resalud.gob.cl','password'=>bcrypt('password'), 'position'=>'Jefe','organizational_unit_id'=>$ouDPCR->id]);
 
         $user = User::Create(
-            ['id'=>14107361, 'dv'=>3, 'name'=>'Pamela Villagrán Alvarez','email'=>'pamela.villagran@redsalud.gob.cl','password'=>bcrypt('password'), 'position'=>'Administrativa','organizational_unit_id'=>19]);
+            ['id'=>14107361, 'dv'=>3, 'name'=>'Pamela Villagrán Alvarez','email'=>'pamela.villagran@redsalud.gob.cl','password'=>bcrypt('password'), 'position'=>'Administrativa','organizational_unit_id'=>$ouDPCR->id]);
 
         $user = User::Create(
-            ['id'=>16966444, 'dv'=>7, 'name'=>'Jorge Miranda Lopez','email'=>'jorge.miranda@resalud.gob.cl','password'=>bcrypt('password'), 'position'=>'Profesional SIDRA','organizational_unit_id'=>41]);
+            ['id'=>16966444, 'dv'=>7, 'name'=>'Jorge Miranda Lopez','email'=>'jorge.miranda@resalud.gob.cl','password'=>bcrypt('password'), 'position'=>'Profesional SIDRA','organizational_unit_id'=>$ouTIC->id]);
 
         $user = User::Create(
-            ['id'=>15924400, 'dv'=>8, 'name'=>'Cristian Carpio','email'=>'cristian.carpio@resalud.gob.cl','password'=>bcrypt('password'), 'position'=>'Profesional SIDRA','organizational_unit_id'=>41]);
+            ['id'=>15924400, 'dv'=>8, 'name'=>'Cristian Carpio','email'=>'cristian.carpio@resalud.gob.cl','password'=>bcrypt('password'), 'position'=>'Profesional SIDRA','organizational_unit_id'=>$ouTIC->id]);
 
         
         /*

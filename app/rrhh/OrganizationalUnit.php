@@ -21,11 +21,11 @@ class OrganizationalUnit extends Model
     }
 
     public function father() {
-        return $this->hasOne('\App\rrhh\OrganizationalUnit','id', 'organizational_unit_id');
+        return $this->belongsTo('\App\rrhh\OrganizationalUnit', 'organizational_unit_id');
     }
 
     public function childs() {
-        return $this->hasMany('\App\rrhh\OrganizationalUnit');
+        return $this->hasMany('\App\rrhh\OrganizationalUnit', 'organizational_unit_id');
     }
 
     use SoftDeletes;
