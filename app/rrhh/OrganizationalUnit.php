@@ -4,8 +4,9 @@ namespace App\rrhh;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class OrganizationalUnit extends Model
+class OrganizationalUnit extends Eloquent
 {
     /**
      * The attributes that are mass assignable.

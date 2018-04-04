@@ -24,16 +24,16 @@
 
 <div class="row">
 	<div class="col-md-7">
-		<b>+</b> <a href="{{ route('rrhh.users.directory') }}?ou={{$organizationalUnit->id}}">{{ $organizationalUnit->name }}</a>
+		<b>+</b> <a href="{{ route('rrhh.users.directory') }}?ou={{$organizationalUnit->_id}}">{{ $organizationalUnit->name }}</a>
 		<ul class="small">
 			@foreach($organizationalUnit->childs as $child_level_1)
-				<li><a href="{{ route('rrhh.users.directory') }}?ou={{$child_level_1->id}}"> {{$child_level_1->name}} </a></li>
+				<li><a href="{{ route('rrhh.users.directory') }}?ou={{$child_level_1->_id}}"> {{$child_level_1->name}} </a></li>
 				<ul>
 					@foreach($child_level_1->childs as $child_level_2)
-						<li><a href="{{ route('rrhh.users.directory') }}?ou={{$child_level_2->id}}">{{ $child_level_2->name }}</a></li>
+						<li><a href="{{ route('rrhh.users.directory') }}?ou={{$child_level_2->_id}}">{{ $child_level_2->name }}</a></li>
 							<ul>
 								@foreach($child_level_2->childs as $child_level_3)
-									<li><a href="{{ route('rrhh.users.directory') }}?ou={{$child_level_3->id}}">{{ $child_level_3->name }}</a></li>
+									<li><a href="{{ route('rrhh.users.directory') }}?ou={{$child_level_3->_id}}">{{ $child_level_3->name }}</a></li>
 								@endforeach
 							</ul>
 					@endforeach

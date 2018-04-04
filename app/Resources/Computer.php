@@ -4,8 +4,9 @@ namespace App\Resources;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class Computer extends Model
+class Computer extends Eloquent
 {
     /**
      * The attributes that are mass assignable.
